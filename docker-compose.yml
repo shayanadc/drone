@@ -1,0 +1,18 @@
+version: "3"
+services:
+  drn:
+    container_name: drone_auto
+    restart: always
+    build: .
+    image: drone/drone:1
+    ports:
+      - "8080:80"
+      - "443:443" 
+    volumes:
+      - .:/data
+    environment:
+      - DRONE_GITHUB_CLIENT_ID=cf7c7764340c81dab74f
+      - DRONE_GITHUB_CLIENT_SECRET=78bec0834a83f5d19e5a5d5cf7fb98f0904c83ce
+      - DRONE_RPC_SECRET=correct-horse-batter-staple
+      - DRONE_SERVER_HOST=localhost:8080
+      - DRONE_SERVER_PROTO=http
